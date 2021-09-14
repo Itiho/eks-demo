@@ -1,10 +1,10 @@
 name: Deploy
 on:
   push:
-    # paths:
-    # - 'docker/nginx**'
+    paths:
+    - 'docker/nginx**'
     branches:
-      - master
+      - main
 jobs:
   Build:
     runs-on: ubuntu-latest
