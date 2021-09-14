@@ -1,8 +1,8 @@
 name: Deploy
 on:
   push:
-    paths:
-    - 'docker/nginx**'
+    # paths:
+    # - 'docker/nginx**'
     branches:
       - master
 jobs:
