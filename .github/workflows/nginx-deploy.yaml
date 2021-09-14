@@ -42,7 +42,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy in development
-        run: helm upgrade -n development --install nginx charts/demo-chart --set service.type=LoadBalancer --set environment=sandbox --set image.repository=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nginx --set image.tag=${GITHUB_RUN_NUMBER} --set env.name.ENVIRONMENT=development
+        run: helm template -n development  nginx charts/demo-chart --set service.type=LoadBalancer --set environment=sandbox --set image.repository=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/nginx --set image.tag=${GITHUB_RUN_NUMBER} --set env.name.ENVIRONMENT=development
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
