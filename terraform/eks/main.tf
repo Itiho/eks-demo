@@ -5,7 +5,6 @@ locals {
     OWNER       = "ME"
   }
   cluster_name   = "eks-demo"
-  worker_sg_tags = { "kubernetes.io/cluster/eks-demo" = "shared" }
 }
 
 resource "random_string" "suffix" {
@@ -59,9 +58,6 @@ module "eks" {
   subnets                              = data.aws_subnet_ids.eks_subnet.ids
   vpc_id                               = data.aws_vpc.vpc.id
   cluster_endpoint_public_access_cidrs = var.cluster_endpoint_public_access_cidrs
-  worker_additional_security_group_ids = [
-    module.ingress_alb_security.sg_id
-  ]
   iam_path                    = "/eks-demo/"
   tags                        = local.common_tags
   worker_sg_ingress_from_port = 443
