@@ -30,10 +30,10 @@ jobs:
           region: us-east-1
           image: nginx:${GITHUB_RUN_NUMBER}
         
-
   Deploy-development:
     runs-on: ubuntu-latest
     environment: development
+    needs: Build
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
